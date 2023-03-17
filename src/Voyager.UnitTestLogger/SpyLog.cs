@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Voyager.UnitTestLogger
 {
@@ -18,6 +19,11 @@ namespace Voyager.UnitTestLogger
 		public string GetSpyContent()
 		{
 			return spyText;
+		}
+
+		public int GetLinesCount()
+		{
+			return this.GetSpyContent().Split(Environment.NewLine).Count();
 		}
 	}
 }
