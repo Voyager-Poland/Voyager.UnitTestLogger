@@ -21,7 +21,7 @@
     <FileVersion>1.0.0.0</FileVersion>
     <SignAssembly>True</SignAssembly>
     <Version></Version>
-    <Title>Endpoints for probing</Title>
+    <Title>Voyager.UnitTestLogger</Title>
     <Authors>Andrzej Świstowski</Authors>
     <Company>Voyager.com sp. z o.o.</Company>
     <Description>Simple implementation of ILogger interface. Is fast to use in the unit tests because there is no need to configure DI and builders. It is possible to use it as an output to console or write the result for testing-spy purposes.</Description>
