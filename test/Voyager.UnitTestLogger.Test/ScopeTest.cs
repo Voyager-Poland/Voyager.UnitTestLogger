@@ -5,6 +5,7 @@ namespace Voyager.UnitTestLogger.Test
 	public class ScopeTest
 	{
 		Microsoft.Extensions.Logging.ILogger logger;
+
 		[SetUp]
 		public void Setup()
 		{
@@ -27,6 +28,7 @@ namespace Voyager.UnitTestLogger.Test
 				logger.LogInformation("L3");
 			}
 			logger.LogInformation("B2");
+			
 			Voyager.UnitTestLogger.SpyLog<ScopeTest> casted = (logger as Voyager.UnitTestLogger.SpyLog<ScopeTest>)!;
 			Assert.That(casted.GetSpyContent(), Is.EqualTo(
 "B1" + Environment.NewLine +
