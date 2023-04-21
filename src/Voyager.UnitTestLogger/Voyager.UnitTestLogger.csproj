@@ -2,14 +2,11 @@
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;net6.0;net472</TargetFrameworks>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
     <MyFrame>OLD</MyFrame>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
     <MyFrame>NEW</MyFrame>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net472' ">
     <MyFrame>STANDARD</MyFrame>
@@ -62,7 +59,7 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(MyFrame)' == 'STANDARD'">
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
   </ItemGroup>
   
 </Project>

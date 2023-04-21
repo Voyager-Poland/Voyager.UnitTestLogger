@@ -21,7 +21,10 @@ namespace Voyager.UnitTestLogger.Test
 		{
 			dataReader.Read();
 			dataReader.Read();
-			Assert.That(logger.GetLinesCount(), Is.EqualTo(GetExpectedValue()));
+
+			int linie = logger.GetLinesCount();
+
+			Assert.That(linie, Is.EqualTo(GetExpectedValue()));
 		}
 
 		protected virtual MyDataReader GetReader(ILogger logger)

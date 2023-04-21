@@ -11,9 +11,9 @@ namespace Voyager.UnitTestLogger
 			return new LogScope(this);
 		}
 
-		public abstract void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter);
+		public abstract void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter);
 
-		protected virtual string ProcessContent<TState>(TState state, Exception? exception, Func<TState, Exception, string> formatter)
+		protected virtual string ProcessContent<TState>(TState state, Exception exception, Func<TState, Exception, string> formatter)
 		{
 			return GetSpacess() + formatter.Invoke(state, exception);
 		}

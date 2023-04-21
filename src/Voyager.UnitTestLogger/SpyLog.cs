@@ -23,7 +23,8 @@ namespace Voyager.UnitTestLogger
 
 		public int GetLinesCount()
 		{
-			return this.GetSpyContent().Split(Environment.NewLine).Count();
+			char[] ch = Environment.NewLine.ToCharArray();
+			return this.GetSpyContent().Split(ch, StringSplitOptions.RemoveEmptyEntries).Count();
 		}
 	}
 }
