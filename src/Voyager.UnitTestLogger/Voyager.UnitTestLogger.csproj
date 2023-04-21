@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net6.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net6.0;net472</TargetFrameworks>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
@@ -10,7 +10,9 @@
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
     <MyFrame>NEW</MyFrame>
   </PropertyGroup>
-  
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net472' ">
+    <MyFrame>STANDARD</MyFrame>
+  </PropertyGroup>
   <PropertyGroup>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/Voyager-Poland/Voyager.UnitTestLogger</PackageProjectUrl>
