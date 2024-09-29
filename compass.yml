@@ -1,0 +1,11 @@
+configVersion: 1
+name: Voyager.UnitTestLogger
+id: 'ari:cloud:compass:a0000000-a000-a000-d200-e00020000000:component/00004000-0000-0000-0400-000005000000/66000000-0000-0600-5000-400000000000'
+description: This is a sample component in Compass.
+typeId: SERVICE
+ownerId: null
+fields: {}
+labels: []
+links: []
+customFields: []
+relationships: {}
