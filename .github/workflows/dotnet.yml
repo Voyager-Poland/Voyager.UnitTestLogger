@@ -1,0 +1,40 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+    - name: Voyager-Source
+      run: dotnet nuget add source "https://nuget.pkg.github.com/Voyager-Poland/index.json" -n Voyager-Poland -u ${{secrets.VOY_ACTIONLOGIN}} -p ${{secrets.VOY_ACTIONLOGINPASS}} --store-password-in-clear-text
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore  -c Release
+    - name: Test
+      run: dotnet test --no-build --verbosity normal  -c Release
+    - name: Pack
+      run: dotnet pack --no-restore --no-build -c Release ${{ github.workspace }}/src/ConsoleLogger/ConsoleLogger.csproj
+    - name: Publish the package to GPR
+      run: dotnet nuget push ${{ github.workspace }}/src/ConsoleLogger/bin/Release/*.nupkg -s Voyager-Poland  --skip-duplicate
+    - name: upload to Nuget.org
+      uses: brandedoutcast/publish-nuget@v2.5.2
+      with:
+          PROJECT_FILE_PATH: ${{ github.workspace }}/src/ConsoleLogger/ConsoleLogger.csproj
+          NUGET_KEY: ${{secrets.VOY_AND_API_KEY}}

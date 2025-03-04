@@ -15,6 +15,11 @@ namespace Voyager.UnitTestLogger
 
 		protected virtual string ProcessContent<TState>(TState state, Exception exception, Func<TState, Exception, string> formatter)
 		{
+			return FormatContent(state, exception, formatter);
+		}
+
+		protected virtual string FormatContent<TState>(TState state, Exception exception, Func<TState, Exception, string> formatter)
+		{
 			return GetSpacess() + formatter.Invoke(state, exception);
 		}
 

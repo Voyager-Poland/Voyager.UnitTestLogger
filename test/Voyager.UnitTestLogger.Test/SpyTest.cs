@@ -27,6 +27,18 @@ namespace Voyager.UnitTestLogger.Test
 			Assert.That(linie, Is.EqualTo(GetExpectedValue()));
 		}
 
+		[Test]
+		public void CheckSpyData()
+		{
+			dataReader.Read();
+			dataReader.Read();
+
+			var content = logger.GetSpyData().ToArray();
+
+			Assert.That(content, Is.Not.Empty);
+			Assert.That(content.Length, Is.EqualTo(GetExpectedValue()));
+		}
+
 		protected virtual MyDataReader GetReader(ILogger logger)
 		{
 			return new MyDataReader(logger);
