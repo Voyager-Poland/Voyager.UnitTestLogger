@@ -30,7 +30,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal  -c Release
     - name: Pack
-      run: dotnet pack --no-restore --no-build -c Release ${{ github.workspace }}/src/ConsoleLogger/ConsoleLogger.csproj
+      run: dotnet pack --no-restore --no-build -c Release ${{ github.workspace }}/src/Voyager.UnitTestLogger/ConsoleLogger/ConsoleLogger.csproj
     - name: Publish the package to GPR
       run: dotnet nuget push ${{ github.workspace }}/src/ConsoleLogger/bin/Release/*.nupkg -s Voyager-Poland  --skip-duplicate
     - name: upload to Nuget.org
