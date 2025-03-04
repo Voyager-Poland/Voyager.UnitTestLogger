@@ -11,6 +11,7 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -30,11 +31,11 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal  -c Release
     - name: Pack
-      run: dotnet pack --no-restore --no-build -c Release ${{ github.workspace }}/src/Voyager.UnitTestLogger/ConsoleLogger/ConsoleLogger.csproj
+      run: dotnet pack --no-restore --no-build -c Release ${{ github.workspace }}/src/Voyager.UnitTestLogger/Voyager.UnitTestLogger.csproj
     - name: Publish the package to GPR
-      run: dotnet nuget push ${{ github.workspace }}/src/ConsoleLogger/bin/Release/*.nupkg -s Voyager-Poland  --skip-duplicate
+      run: dotnet nuget push ${{ github.workspace }}/src/Voyager.UnitTestLogger/bin/Release/*.nupkg -s Voyager-Poland  --skip-duplicate
     - name: upload to Nuget.org
       uses: brandedoutcast/publish-nuget@v2.5.2
       with:
-          PROJECT_FILE_PATH: ${{ github.workspace }}/src/ConsoleLogger/ConsoleLogger.csproj
+          PROJECT_FILE_PATH: ${{ github.workspace }}/src/Voyager.UnitTestLogger/Voyager.UnitTestLogger.csproj
           NUGET_KEY: ${{secrets.VOY_AND_API_KEY}}
